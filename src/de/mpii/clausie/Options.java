@@ -64,7 +64,8 @@ public class Options {
 	/**Constructs the set of options out of a conf file (clausie.conf)*/
 	public Options() {
 		try {
-			InputStream in = getClass().getResource("resources/clausie.conf").openStream();
+//			InputStream in = getClass().getResource("resources/clausie.conf").openStream();
+			InputStream in = Options.class.getResourceAsStream("/resources/clausie.conf");
 			setOptions(in);
 			in.close();		
 		} catch (IOException e) {
@@ -86,7 +87,8 @@ public class Options {
 			return new FileInputStream(file);
 		} catch (FileNotFoundException e) {
 		}
-		URL url = getClass().getResource(name);
+//		URL url = getClass().getResource(name);
+		URL url = Options.class.getResource("/"+name);
 		if (url == null) {
 			throw new IOException("File or resource '" + name + "' not found.");
 		}
